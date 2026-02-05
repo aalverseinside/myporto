@@ -1,169 +1,194 @@
-/* --- 1. RESET & DASAR --- */
+/* --- INITIALIZATION & CORE SYSTEM --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Memastikan padding tidak merusak ukuran elemen */
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Font modern tanpa kaki */
-    scroll-behavior: smooth; /* Efek scroll halus saat klik menu navigasi */
+    margin: 0; /* Menghapus margin bawaan browser agar layout presisi */
+    padding: 0; /* Menghapus padding bawaan browser */
+    box-sizing: border-box; /* Memastikan perhitungan lebar elemen menyertakan border dan padding */
+}
+
+:root {
+    --core-blue: #00d2ff; /* Warna biru utama untuk elemen robotik */
+    --deep-blue: #003366; /* Warna biru gelap untuk kedalaman visual */
+    --carbon-black: #0a0b10; /* Warna hitam karbon untuk background utama */
+    --electric-glow: rgba(0, 210, 255, 0.5); /* Warna pendaran elektrik */
+    --text-silver: #e0e0e0; /* Warna teks perak agar mudah dibaca di latar gelap */
 }
 
 body {
-    background-color: #0b0e14; /* Warna latar belakang gelap khas tema AI/Informatika */
-    color: #e0e0e0; /* Warna teks abu-abu terang agar tidak sakit di mata */
-    line-height: 1.6;
+    font-family: 'Roboto', sans-serif; /* Font utama untuk kenyamanan membaca */
+    background-color: var(--carbon-black); /* Latar belakang hitam elegan */
+    color: var(--text-silver); /* Warna teks standar sistem */
+    line-height: 1.6; /* Memberikan spasi antar baris teks */
+    overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
 }
 
-/* --- 2. NAVIGASI (Sticky & Modern) --- */
-nav {
-    display: flex;
-    justify-content: space-between; /* Logo di kiri, menu di kanan */
-    align-items: center;
-    padding: 20px 10%;
-    background: rgba(11, 14, 20, 0.95); /* Semi transparan */
-    position: fixed; /* Tetap di atas saat di-scroll */
+/* --- NAVIGATION SYSTEM --- */
+header {
+    background: rgba(10, 11, 16, 0.9); /* Transparansi agar terlihat futuristik */
+    backdrop-filter: blur(10px); /* Efek blur kaca di belakang navbar */
+    border-bottom: 2px solid var(--core-blue); /* Garis biru sebagai pemisah sistem */
+    position: fixed; /* Menempel di atas layar saat melakukan scrolling */
     width: 100%;
     top: 0;
-    z-index: 1000; /* Agar tidak tertutup elemen lain */
-    border-bottom: 1px solid #1f2937; /* Garis tipis di bawah nav */
+    z-index: 9999; /* Memastikan navbar berada di lapisan teratas */
+}
+
+nav {
+    display: flex; /* Mengaktifkan mode flexbox untuk perataan */
+    justify-content: space-between; /* Logo di kiri, menu di kanan */
+    align-items: center; /* Menjaga elemen sejajar secara vertikal */
+    padding: 15px 8%; /* Memberikan ruang napas di dalam navbar */
 }
 
 .logo {
+    font-family: 'Orbitron', sans-serif; /* Font futuristik untuk identitas robot */
     font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 1px;
+    color: white;
+    letter-spacing: 2px; /* Memberikan jarak antar huruf */
 }
 
 .logo span {
-    color: #00d4ff; /* Aksen warna biru neon untuk identitas teknologi */
+    color: var(--core-blue); /* Memberi aksen biru pada bagian 'Porto' */
+    text-shadow: 0 0 10px var(--core-blue); /* Efek cahaya pada logo */
 }
 
 nav ul {
     display: flex;
-    list-style: none;
+    list-style: none; /* Menghilangkan titik-titik pada list */
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 30px; /* Jarak antar menu navigasi */
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #cbd5e1;
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    color: white;
     font-weight: 500;
-    transition: 0.3s; /* Efek transisi halus saat hover */
+    text-transform: uppercase; /* Mengubah teks menjadi huruf kapital semua */
+    transition: 0.3s; /* Efek transisi halus saat interaksi */
 }
 
 nav ul li a:hover {
-    color: #00d4ff; /* Berubah warna saat kursor mendekat */
+    color: var(--core-blue); /* Berubah warna saat kursor robot mendekat */
+    text-shadow: 0 0 8px var(--core-blue); /* Efek glow saat di-hover */
 }
 
-/* --- 3. HERO SECTION (Tampilan Utama) --- */
+/* --- HERO SECTION (CENTRAL PROCESSING UNIT) --- */
 .hero {
-    height: 100vh; /* Memenuhi layar laptop */
+    height: 100vh; /* Mengisi penuh satu layar laptop */
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center; /* Rata tengah vertikal */
+    justify-content: space-around; /* Memberi jarak antar konten dan gambar */
     padding: 0 10%;
-    background: radial-gradient(circle at top right, #1a2238, #0b0e14); /* Gradien melingkar */
+    /* Gradasi sirkuit untuk latar belakang hero */
+    background: radial-gradient(circle at center, #16213e 0%, #0a0b10 100%);
 }
 
 .hero-content h1 {
+    font-family: 'Orbitron', sans-serif;
     font-size: 3.5rem;
-    margin: 10px 0;
-    color: #ffffff;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .hero-content p {
-    color: #94a3b8;
+    font-size: 1.2rem;
+    color: #8892b0;
     max-width: 500px;
-    margin-bottom: 20px;
 }
 
 .btn-hero {
     display: inline-block;
-    padding: 12px 28px;
-    background: #00d4ff;
-    color: #0b0e14;
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--core-blue);
+    border: 2px solid var(--core-blue); /* Border elektrik */
     text-decoration: none;
-    border-radius: 5px;
     font-weight: bold;
-    transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); /* Efek cahaya neon */
+    border-radius: 5px;
+    transition: 0.4s;
+    text-transform: uppercase;
 }
 
 .btn-hero:hover {
-    transform: translateY(-3px); /* Efek melayang */
-    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+    background: var(--core-blue);
+    color: var(--carbon-black);
+    box-shadow: 0 0 20px var(--core-blue); /* Efek ledakan cahaya saat hover */
 }
 
 .hero-logo img {
-    width: 350px;
-    height: 350px;
-    border-radius: 20%; /* Sedikit melengkung (modern look) */
+    width: 320px;
+    height: 320px;
     object-fit: cover;
-    border: 4px solid #1f2937;
-    animation: float 4s ease-in-out infinite; /* Animasi melayang */
+    border-radius: 50%;
+    border: 4px solid var(--core-blue);
+    box-shadow: 0 0 30px var(--electric-glow); /* Aura biru di sekitar foto profil */
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-/* --- 4. CONTAINER & ABOUT --- */
+/* --- ABOUT SECTION --- */
 .container {
-    padding: 100px 10%;
+    padding: 100px 10%; /* Spasi standar antar bagian */
 }
 
-h2 {
-    font-size: 2.5rem;
+.about {
     text-align: center;
-    margin-bottom: 40px;
-    color: #00d4ff;
 }
 
-.about-content {
-    background: #161b22;
-    padding: 40px;
-    border-radius: 15px;
-    border-left: 5px solid #00d4ff; /* Aksen garis di samping */
+.about h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--core-blue);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
 }
 
 .about-content p {
-    margin-bottom: 15px;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: justify; /* Teks rata kanan-kiri agar terlihat rapi secara algoritma */
 }
 
-/* --- 5. PROYEK (Grid Layout) --- */
+/* --- PROYEK GRID (DATABASE GRID) --- */
 .bg-light {
-    background-color: #0d1117;
+    background-color: #0f111a; /* Background sedikit berbeda untuk kontras */
+}
+
+.proyek h2 {
+    text-align: center;
+    color: var(--core-blue);
+    margin-bottom: 50px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .proyek-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif otomatis */
-    gap: 25px; /* Jarak antar kartu */
+    display: grid; /* Mengaktifkan sistem grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif otomatis: 3 kolom di laptop */
+    gap: 30px; /* Jarak antar modul proyek */
 }
 
 .proyek-card {
-    background: #161b22;
-    border-radius: 12px;
+    background: #1a1c29;
+    border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
-    color: inherit;
+    color: white;
+    border: 1px solid rgba(0, 210, 255, 0.1);
     transition: 0.3s;
-    border: 1px solid #30363d;
 }
 
 .proyek-card:hover {
-    transform: scale(1.03); /* Membesar sedikit */
-    border-color: #00d4ff;
+    transform: translateY(-10px); /* Efek mengangkat kartu */
+    border-color: var(--core-blue);
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2);
 }
 
 .proyek-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    opacity: 0.8; /* Sedikit redup agar terlihat menyatu dengan tema */
 }
 
 .proyek-info {
@@ -171,46 +196,67 @@ h2 {
 }
 
 .proyek-info h3 {
-    color: #00d4ff;
     margin-bottom: 10px;
+    color: var(--core-blue);
 }
 
-/* --- 6. MEDIA SOSIAL --- */
+/* --- MEDSOS (COMMUNICATION CHANNEL) --- */
+.medsos {
+    text-align: center;
+}
+
+.medsos h2 {
+    margin-bottom: 40px;
+    font-family: 'Orbitron', sans-serif;
+}
+
 .medsos-list {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 40px;
 }
 
 .medsos-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-decoration: none;
-    color: #fff;
+    color: var(--text-silver);
+    font-size: 0.9rem;
     transition: 0.3s;
 }
 
 .medsos-item img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-    filter: grayscale(100%); /* Awalnya hitam putih */
-    transition: 0.3s;
+    width: 45px;
+    height: 45px;
+    display: block;
+    margin: 0 auto 10px;
+    filter: drop-shadow(0 0 5px var(--electric-glow)); /* Memberi cahaya pada ikon medsos */
 }
 
-.medsos-item:hover img {
-    filter: grayscale(0%); /* Berwarna saat di-hover */
-    transform: rotate(360deg); /* Animasi putar */
+.medsos-item:hover {
+    color: var(--core-blue);
+    transform: scale(1.1); /* Sedikit membesar saat diakses */
 }
 
-/* --- 7. FOOTER --- */
+/* --- FOOTER --- */
 footer {
-    text-align: center;
     padding: 40px;
-    background: #0b0e14;
-    border-top: 1px solid #1f2937;
-    color: #6e7681;
-    font-size: 0.9rem;
+    text-align: center;
+    border-top: 1px solid #1a1c29;
+    color: #444;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 3px;
+}
+
+/* --- RESPONSIVE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Menumpuk konten secara vertikal di perangkat mobile */
+        text-align: center;
+        padding-top: 120px;
+    }
+
+    .hero-logo img {
+        width: 250px;
+        height: 250px;
+        margin-top: 40px;
+    }
 }
